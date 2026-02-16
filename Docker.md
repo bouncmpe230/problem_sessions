@@ -1,5 +1,127 @@
 # Problem Session 2 - Dockers
 
+# Full System Stack (From Hardware to Containers)
+
+```
++-------------------------------------------------------+
+|                     USER SPACE                        |
+|-------------------------------------------------------|
+|   Applications   |   Docker CLI   |   Shell (bash)   |
++-------------------------------------------------------+
+|                     DOCKER ENGINE                    |
+|-------------------------------------------------------|
+|   Container Runtime (runc / containerd)              |
++-------------------------------------------------------+
+|                       KERNEL                          |
+|-------------------------------------------------------|
+| Process Mgmt | Memory Mgmt | VFS | Network | IPC     |
+| Namespaces   | cgroups     | Syscalls                 |
++-------------------------------------------------------+
+|                     HARDWARE                          |
+|-------------------------------------------------------|
+| CPU | RAM | Disk | Network Card | Devices             |
++-------------------------------------------------------+
+```
+
+
+# Operating System View
+
+```
++------------------------------------------+
+|               Applications               |
++------------------------------------------+
+|              System Call API             |
+|------------------------------------------|
+| fork | exec | read | write | open | mmap|
++------------------------------------------+
+|                 KERNEL                   |
+|------------------------------------------|
+|  Scheduler  |  Memory  |  VFS  |  Net   |
++------------------------------------------+
+|                Hardware                  |
++------------------------------------------+
+```
+
+Important:
+
+Applications NEVER access hardware directly.
+
+They use:
+
+```
+Application → syscall → kernel → hardware
+```
+
+
+# 3️⃣ File System Structure
+
+```
+                    /
+                    |
+     ---------------------------------
+     |       |        |       |      |
+    /bin    /home    /etc    /usr   /dev
+     |
+   [ls]
+```
+
+Internally:
+
+```
+Path → Inode → Data Blocks
+```
+
+Kernel handles VFS (Virtual File System):
+
+```
+open("/home/x/file.txt")
+           ↓
+        inode lookup
+           ↓
+        disk blocks
+```
+
+
+
+
+
+# Everything Is a File (Kernel View)
+
+Inside Linux:
+
+```
+/dev/sda     → Disk
+/dev/tty     → Terminal
+/proc/1234   → Process info
+/sys         → Kernel settings
+```
+
+Even containers are just:
+
+```
+Isolated processes + file descriptors
+```
+
+
+# Concept Summary Diagram
+
+```
+        +------------------------------+
+        |        APPLICATIONS          |
+        +------------------------------+
+        |         DOCKER ENGINE        |
+        +------------------------------+
+        |            KERNEL            |
+        +------------------------------+
+        |           HARDWARE           |
+        +------------------------------+
+```
+
+Containers = kernel feature usage.
+They are NOT mini operating systems.
+
+
+
 # Containers, Isolation & Dev Environments
 
 
@@ -186,6 +308,44 @@ Container writable layer
 ```
 
 Delete container → writable layer gone.
+
+#  Docker Architecture in Context
+
+```
+Host Machine
+---------------------------------------------------------
+|                                                       |
+|  Kernel (shared)                                      |
+|  ---------------------------------------------------  |
+|  Namespace + cgroups isolate processes               |
+|                                                       |
+|     +--------------------+                           |
+|     |  Container A       |                           |
+|     |--------------------|                           |
+|     |  App               |                           |
+|     |  FS Layer          |                           |
+|     +--------------------+                           |
+|                                                       |
+|     +--------------------+                           |
+|     |  Container B       |                           |
+|     |--------------------|                           |
+|     |  App               |                           |
+|     |  FS Layer          |                           |
+|     +--------------------+                           |
+|                                                       |
+---------------------------------------------------------
+```
+
+Containers share:
+
+* Same kernel
+
+They isolate:
+
+* Processes (PID namespace)
+* Filesystem (mount namespace)
+* Network (net namespace)
+* CPU/memory (cgroups)
 
 
 
