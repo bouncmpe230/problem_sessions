@@ -1,10 +1,10 @@
 
 # CMPE 230 – Systems Programming
 
-# Problem Session 1–2 (Extended & Structured)
+# Problem Session 1
 
 
----
+
 
 # What Is an Operating System?
 
@@ -31,13 +31,12 @@ It is:
 
 > A resource manager + execution controller.
 
----
 
----
+
+
 
 # The Kernel
 
-(Ref: PS1 page 4 )
 
 Kernel responsibilities:
 
@@ -64,9 +63,9 @@ The shell does not execute programs.
 
 It asks the kernel to.
 
----
 
----
+
+
 
 # The Shell: Process Manager
 
@@ -85,9 +84,9 @@ It:
 
 After termination, the shell regains control.
 
----
 
----
+
+
 
 # File System as a Hierarchical Namespace
 
@@ -113,16 +112,16 @@ Paths are just strings.
 
 The kernel resolves them to **inodes**.
 
----
 
----
+
+
 
 # Navigation = Pointer Movement
 
 Special symbols:
 
 | Symbol | Meaning           |
-| ------ | ----------------- |
+|  | -- |
 | `.`    | current directory |
 | `..`   | parent directory  |
 | `~`    | home directory    |
@@ -141,9 +140,9 @@ Critical detail:
 
 It modifies the shell's internal working directory.
 
----
 
----
+
+
 
 # Creating Directories Efficiently
 
@@ -157,9 +156,9 @@ mkdir -p ~/cmpe230/ps1
 `-p` prevents errors if parents already exist.
 
 
----
 
----
+
+
 
 # File Creation & Movement
 
@@ -170,9 +169,9 @@ mv file.txt directory/
 mv file.txt renamed.txt
 ```
 
----
 
----
+
+
 
 # Viewing File Content
 
@@ -191,9 +190,9 @@ Used for:
 * Debugging
 * Server logs
 
----
 
----
+
+
 
 # File Deletion & Risk
 
@@ -212,9 +211,9 @@ There is no recycle bin.
 
 Deletion removes directory references to inode.
 
----
 
----
+
+
 
 # Wildcards & Expansion
 
@@ -238,9 +237,9 @@ Shell expands to:
 ls file1.txt file2.txt
 ```
 
----
 
----
+
+
 
 # Long Listing & Permissions
 
@@ -266,11 +265,11 @@ Where:
 * w = 2
 * x = 1
 
----
 
----
 
-# Slide 12 — Octal Logic
+
+
+# Octal Logic
 
 
 Example:
@@ -299,9 +298,9 @@ chmod 645 file
 
 This is numerical permission encoding.
 
----
 
----
+
+
 
 # Directory Permissions Are Different
 
@@ -314,7 +313,7 @@ Execute bit on directory means:
 Example:
 
 ```
-drw-------
+drw-
 ```
 
 Owner can read/write.
@@ -323,9 +322,9 @@ But cannot `cd` into it.
 
 Because no execute bit.
 
----
 
----
+
+
 
 # Changing Permissions
 
@@ -345,9 +344,9 @@ chmod -R 700 PS2/
 
 Only owner can use chmod.
 
----
 
----
+
+
 
 # Hard vs Soft Links
 
@@ -368,14 +367,14 @@ ln -s original.txt link.txt
 
 `.` and `..` are hard links.
 
----
 
----
+
+
 
 # Standard Streams
 
 | FD | Meaning |
-| -- | ------- |
+| -- | - |
 | 0  | stdin   |
 | 1  | stdout  |
 | 2  | stderr  |
@@ -391,9 +390,9 @@ command &> combined.log
 
 Redirection is descriptor manipulation.
 
----
 
----
+
+
 
 # Pipes as Composition
 
@@ -414,9 +413,9 @@ Each process:
 * Runs concurrently
 * Communicates via kernel pipe buffer
 
----
 
----
+
+
 
 # Grep + Sort + Count Pipeline
 
@@ -437,9 +436,9 @@ Order matters.
 
 `uniq` requires sorted input.
 
----
 
----
+
+
 
 # Process Management
 
@@ -463,9 +462,9 @@ Terminate:
 kill <pid>
 ```
 
----
 
----
+
+
 
 # Background Processes
 
@@ -490,9 +489,9 @@ nohup command &
 screen -S session
 ```
 
----
 
----
+
+
 
 # Disk Usage
 
@@ -509,9 +508,9 @@ Difference:
 One is metadata-based.
 One reads actual file sizes.
 
----
 
----
+
+
 
 # File Searching
 
@@ -527,9 +526,9 @@ find . -exec chmod a+x {} \;
 
 It traverses filesystem tree programmatically.
 
----
 
----
+
+
 
 # Process & File Model Connection
 
@@ -544,9 +543,9 @@ Everything is a file:
 
 System programming = manipulating files + processes safely.
 
----
 
----
+
+
 
 # Real Systems Debugging Scenario
 
@@ -568,9 +567,9 @@ Reason in correct order:
 3. Disk full?
 4. Log explosion?
 
----
 
----
+
+
 
 # Summary
 
