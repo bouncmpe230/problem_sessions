@@ -7,7 +7,9 @@
 
 
 # What Is an Operating System?
-<img width="177" height="258" alt="Screenshot 2026-02-16 at 14 55 18" src="https://github.com/user-attachments/assets/a9a87bdc-cea9-4578-8bf8-21bbf6627c9e" />
+
+
+<img width="177" height="258" alt="Screenshot 2026-02-16 at 14 55 18" src="https://github.com/user-attachments/assets/20947392-f440-46d6-8d7c-1fff8012eb50" />
 
 
 An Operating System:
@@ -37,7 +39,8 @@ It is:
 
 
 # The Kernel
-<img width="244" height="235" alt="Screenshot 2026-02-16 at 14 56 10" src="https://github.com/user-attachments/assets/77e4fcd8-bd70-4601-8d76-4b7f56a85999" />
+<img width="244" height="235" alt="Screenshot 2026-02-16 at 14 56 10" src="https://github.com/user-attachments/assets/8b50b992-477a-4fe6-b074-c778c1d8c275" />
+
 
 
 Kernel responsibilities:
@@ -98,7 +101,10 @@ Linux directory structure begins at:
 ```
 /
 ```
-<img width="368" height="185" alt="Screenshot 2026-02-16 at 14 56 41" src="https://github.com/user-attachments/assets/ea1ce59f-e52c-4dcc-80bf-a243a31d05d6" />
+
+<img width="368" height="185" alt="Screenshot 2026-02-16 at 14 56 41" src="https://github.com/user-attachments/assets/3e7b6164-bf70-45a0-a367-5f96b6eeae16" />
+
+
 
 
 Key directories:
