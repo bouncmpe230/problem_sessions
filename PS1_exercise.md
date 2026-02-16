@@ -2,7 +2,7 @@
 
 # Problem Session: The System Auditor Mission
 
----
+
 
 #  1 — Mission Briefing
 
@@ -32,9 +32,9 @@ This is not just shell usage.
 
 This is systems reasoning.
 
----
 
----
+
+
 
 #  2 — What We Will Actually Practice
 
@@ -52,9 +52,9 @@ You are not learning commands.
 
 You are learning **control over a system.**
 
----
 
----
+
+
 
 #  3 — Kernel & Shell Refresher
 
@@ -77,9 +77,9 @@ The shell is not magic.
 
 It is a **process launcher + interpreter.**
 
----
 
----
+
+
 
 #  4 — Mission Objective
 
@@ -98,9 +98,9 @@ It should:
 
 Deliverable: A working script.
 
----
 
----
+
+
 
 #  5 — Phase 1: Establish Audit Base
 
@@ -128,9 +128,9 @@ Correct answer:
 
 > To avoid breakage when paths contain spaces.
 
----
 
----
+
+
 
 #  6 — Redirection Logic
 
@@ -148,19 +148,19 @@ Because:
 * First write defines the file
 * Subsequent writes accumulate structured content
 
----
 
----
+
+
 
 #  7 — Phase 2: Resource Snapshot
 
 Add to script:
 
 ```bash
-echo "--- Uptime ---" >> "$REPORT"
+echo " Uptime " >> "$REPORT"
 uptime >> "$REPORT"
 
-echo "--- Memory ---" >> "$REPORT"
+echo " Memory " >> "$REPORT"
 free -h >> "$REPORT"
 ```
 
@@ -171,16 +171,16 @@ What you just used:
 * Log formatting
 * System health inspection
 
----
 
----
+
+
 
 #  8 — Disk Investigation
 
 Add:
 
 ```bash
-echo "--- Disk Usage ---" >> "$REPORT"
+echo " Disk Usage " >> "$REPORT"
 df -h >> "$REPORT"
 ```
 
@@ -193,7 +193,7 @@ du -sh * >> "$REPORT"
 Which is:
 
 | Command | Fast | Accurate | Deep |
-| ------- | ---- | -------- | ---- |
+| - | - | -- | - |
 | df      | ✅    | ❌        | ❌    |
 | du      | ❌    | ✅        | ✅    |
 
@@ -201,14 +201,14 @@ Real-world meaning:
 
 > Servers fail more often due to disk than CPU.
 
----
 
----
+
+
 
 #  9 — Phase 3: Process Investigation
 
 ```bash
-echo "--- Top CPU Processes ---" >> "$REPORT"
+echo " Top CPU Processes " >> "$REPORT"
 ps -eo pid,comm,%cpu --sort=-%cpu | head -6 >> "$REPORT"
 ```
 
@@ -220,14 +220,14 @@ Breakdown:
 
 This is composable systems design.
 
----
 
----
+
+
 
 #  10 — Root Process Inspection
 
 ```bash
-echo "--- Root Processes ---" >> "$REPORT"
+echo " Root Processes " >> "$REPORT"
 ps -ef | grep "^root" | head -n 10 >> "$REPORT"
 ```
 
@@ -246,9 +246,9 @@ Because otherwise, you may miss relevant processes.
 
 Ordering matters.
 
----
 
----
+
+
 
 #  11 — Pipes as Dataflow Graphs
 
@@ -271,9 +271,9 @@ Unix philosophy:
 
 > Do one thing well.
 
----
 
----
+
+
 
 #  12 — Phase 4: Secure the Evidence
 
@@ -284,10 +284,10 @@ chmod 600 "$REPORT"
 Octal logic:
 
 | Digit | Meaning |
-| ----- | ------- |
+| -- | - |
 | 6     | rw-     |
-| 0     | ---     |
-| 0     | ---     |
+| 0     |      |
+| 0     |      |
 
 Why block group & others?
 
@@ -300,9 +300,9 @@ Because audit logs may expose:
 777 is not permission.
 777 is negligence.
 
----
 
----
+
+
 
 #  13 — Phase 5: Maintain Latest Link
 
@@ -325,9 +325,9 @@ Soft link:
 * Easier to update
 * Points by name, not inode
 
----
 
----
+
+
 
 #  14 — Complete Script
 
@@ -342,19 +342,19 @@ mkdir -p "$AUDIT_DIR"
 
 echo "System Audit - $TIMESTAMP" > "$REPORT"
 
-echo "--- Uptime ---" >> "$REPORT"
+echo " Uptime " >> "$REPORT"
 uptime >> "$REPORT"
 
-echo "--- Memory ---" >> "$REPORT"
+echo " Memory " >> "$REPORT"
 free -h >> "$REPORT"
 
-echo "--- Disk Usage ---" >> "$REPORT"
+echo " Disk Usage " >> "$REPORT"
 df -h >> "$REPORT"
 
-echo "--- Top CPU Processes ---" >> "$REPORT"
+echo " Top CPU Processes " >> "$REPORT"
 ps -eo pid,comm,%cpu --sort=-%cpu | head -6 >> "$REPORT"
 
-echo "--- Root Processes ---" >> "$REPORT"
+echo " Root Processes " >> "$REPORT"
 ps -ef | grep "^root" | head -n 10 >> "$REPORT"
 
 chmod 600 "$REPORT"
@@ -364,9 +364,9 @@ ln -sf "$REPORT" "$AUDIT_DIR/latest_report"
 echo "Audit completed."
 ```
 
----
 
----
+
+
 
 #  15 — What You Actually Learned
 
@@ -382,9 +382,9 @@ Without explicitly discussing C yet, you applied:
 
 You are already thinking like system programmers.
 
----
 
----
+
+
 
 #  16 — Challenge Mode (Advanced)
 
@@ -398,7 +398,7 @@ Hint:
 df -h | awk '$5+0 > 90'
 ```
 
----
+
 
 ### 2️⃣ Detect Zombie Processes
 
@@ -408,7 +408,7 @@ Hint:
 ps aux | awk '$8=="Z"'
 ```
 
----
+
 
 ### 3️⃣ Delete Logs Older Than 7 Days
 
@@ -416,7 +416,7 @@ ps aux | awk '$8=="Z"'
 find "$AUDIT_DIR" -type f -mtime +7 -delete
 ```
 
----
+
 
 ### 4️⃣ Compress Old Logs
 
@@ -424,7 +424,7 @@ find "$AUDIT_DIR" -type f -mtime +7 -delete
 gzip "$REPORT"
 ```
 
----
+
 
 #  17 — Real Production Scenario
 
@@ -445,9 +445,9 @@ Engineering discipline.
 
 Automation prevents human forgetfulness.
 
----
 
----
+
+
 
 #  18 — Reflection
 
@@ -465,9 +465,9 @@ CMPE 230 is not about syntax.
 
 It is about control.
 
----
 
----
+
+
 
 # 19 — Transition to C & Assembly
 
@@ -484,9 +484,9 @@ Today:
 
 You orchestrated all of them indirectly.
 
----
 
----
+
+
 
 #  Final Mission Summary
 
@@ -505,4 +505,4 @@ This is Systems Thinking.
 
 Welcome to CMPE 230.
 
----
+
