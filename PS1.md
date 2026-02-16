@@ -215,9 +215,12 @@ There is no recycle bin.
 
 Deletion removes directory references to inode.
 
+# Directory Deletion 
 
-
-
+```bash
+rmdir directory/
+```
+The directory needs to be empty. 
 
 # Wildcards & Expansion
 
