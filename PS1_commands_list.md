@@ -1,3 +1,4 @@
+```bash
  1009  cd 
  1010  cd Workspace/TA/cmpe230
  1011  mkdir ps1
@@ -105,4 +106,5 @@
  1113  df 
  1114  df -h
  1115  du -sh .
- 1116  du -sh 
+ 1116  du -sh
+```
