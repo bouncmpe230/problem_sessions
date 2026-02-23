@@ -52,6 +52,15 @@ They use:
 Application → syscall → kernel → hardware
 ```
 
+Kernel responsibilities:
+
+- Process scheduling
+- Memory management
+- Virtual File System (VFS)
+- Network stack
+
+Docker does not replace the OS. It uses the OS.
+
 
 # 3️⃣ File System Structure
 
