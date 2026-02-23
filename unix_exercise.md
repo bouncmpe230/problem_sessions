@@ -467,27 +467,6 @@ It is about control.
 
 
 
-
-
-# 19 — Transition to C & Assembly
-
-Soon you will implement:
-
-* fork()
-* exec()
-* pipes()
-* signals()
-* memory allocation
-* system calls directly
-
-Today:
-
-You orchestrated all of them indirectly.
-
-
-
-
-
 #  Final Mission Summary
 
 You started with:
