@@ -538,7 +538,7 @@ Therefore:
 
 
 
-# Quick Hands-On PS Tasks
+# Quick Hands-On Tasks
 
 ### Task 1 – Process Isolation
 
@@ -672,3 +672,28 @@ docker image prune
 * Dockerfile basics
 * Dev containers workflow
 * Namespaces & cgroups
+
+
+# CMPE230 Spring Docker Image
+
+Image:
+
+```
+gokceuludogan/cmpe230-spring26
+```
+
+Usage:
+
+```bash
+docker pull gokceuludogan/cmpe230-spring26:latest
+docker run -it --name cmpe230 gokceuludogan/cmpe230-spring26:latest
+```
+
+Lifecycle commands:
+
+```bash
+docker stop cmpe230
+docker start cmpe230
+docker attach cmpe230
+```
+
