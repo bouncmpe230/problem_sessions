@@ -316,26 +316,6 @@ sudo mkdir /mnt/usb
 
 
 
-## `/etc/fstab`
-
-Defines permanent mounts.
-
-Example:
-
-```
-UUID=xxxx /data ext4 defaults 0 2
-```
-
-
-
-### Exercise
-
-1. Run `lsblk`
-2. Identify root partition
-3. Explain why `/` is already mounted
-
-
-
 # SSH – Secure Shell
 
 SSH allows remote login.
@@ -360,12 +340,6 @@ Using secure file transfer:
 scp file.txt user@server:/home/user/
 ```
 
-Or interactive:
-
-```bash
-sftp user@server
-```
-
 
 
 ## SSH Keys
@@ -384,13 +358,6 @@ ssh-copy-id user@server
 
 Enables passwordless login.
 
-
-
-### Exercise
-
-1. Generate SSH key
-2. Inspect `~/.ssh`
-3. Explain difference between id_rsa and id_rsa.pub
 
 
 
@@ -482,7 +449,6 @@ clear
 w
 who
 last
-finger username
 ```
 
 
@@ -497,6 +463,16 @@ finger username
 
 # Environment Variables
 
+Environment variables are named values that your operating system stores and passes to programs when they run.
+
+Think of them as global configuration settings that tell programs:
+- where important files are
+- which user is running
+- what language or locale to use
+- how to behave
+
+They are available to processes at runtime.
+
 ```bash
 export PATH=/custom/bin:$PATH
 ```
@@ -507,15 +483,6 @@ View variables:
 env
 ```
 
-Permanent config:
-
-```
-~/.bashrc
-```
-
-`source ~/.bashrc`
-
-Reloads current shell.
 
 
 
@@ -526,6 +493,16 @@ Reloads current shell.
 3. Open new shell
 4. Why is it gone?
 
+
+Permanent config:
+
+```
+~/.bashrc
+```
+
+`source ~/.bashrc`
+
+Reloads current shell.
 
 
 # CPU & System Info
