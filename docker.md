@@ -23,6 +23,14 @@
 +-------------------------------------------------------+
 ```
 
+* Process Mgmt → manages who runs
+* Memory Mgmt → manages who uses RAM
+* VFS → manages files
+* Network → manages packets
+* IPC → lets processes talk
+* Namespaces → isolates processes
+* cgroups → limits processes (CPUs/memory)
+* Syscalls → gateway to the kernel
 
 # Operating System View
 
