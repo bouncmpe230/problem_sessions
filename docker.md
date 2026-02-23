@@ -198,11 +198,11 @@ They isolate:
 
 Components:
 
-* Docker client
-* Docker daemon
-* Docker image
-* Docker container
-* Registry (DockerHub)
+- Docker client → The tool users interact with to send Docker commands.
+- Docker daemon → The background service that builds images and runs containers.
+- Docker image → An immutable template containing the app and its dependencies.
+- Docker container → A running, isolated instance of a Docker image.
+- Registry (DockerHub) → A remote repository that stores and distributes Docker images.
 
 Flow:
 
