@@ -186,7 +186,7 @@ They isolate:
 # VM vs Container
 
 | Virtual Machine | Container      |
-|  | -- |
+| ----------      | ---------------|
 | Full OS         | Shared kernel  |
 | Heavy           | Lightweight    |
 | Minutes to boot | Milliseconds   |
