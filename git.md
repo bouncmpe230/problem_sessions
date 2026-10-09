@@ -1,5 +1,3 @@
-# Problem Session 
-
 # Git & GitHub – Version Control & Internal Model
 
 
